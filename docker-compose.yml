@@ -1,0 +1,10 @@
+# Example docker-compose  configuration illustrating how to use this image
+
+libreplan:
+  build: .
+  links:
+    db: db
+  ports: ["8888:8080"]
+
+db:
+  image: postgres

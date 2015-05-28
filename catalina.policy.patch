@@ -1,0 +1,10 @@
+94a95
+>         permission java.io.FilePermission "${catalina.base}${file.separator}webapps${file.separator}libreplan${file.separator}WEB-INF${file.separator}classes${file.separator}logging.properties", "read";
+219a221,227
+> 
+> grant codeBase "file:/var/lib/tomcat6/webapps/libreplan/-" {
+>    permission java.security.AllPermission;
+> };
+> grant codeBase "file:/var/lib/tomcat6/webapps/libreplan.war" {
+>    permission java.security.AllPermission;
+> };
