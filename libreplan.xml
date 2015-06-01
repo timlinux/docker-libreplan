@@ -6,5 +6,5 @@
         maxActive="100" maxIdle="30" maxWait="10000"
         username="libreplan" password="libreplan"
         driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://localhost/libreplan" />
+        url="jdbc:postgresql://db/libreplan" />
 </Context>
