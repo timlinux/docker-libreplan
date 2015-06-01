@@ -9,7 +9,7 @@ RUN apt-get -yq update && apt-get -yq install \
   xvfb
 
 # Install WAR and context
-RUN wget -q -O /usr/local/tomcat/webapps/libreplan.war http://downloads.sourceforge.net/project/libreplan/LibrePlan/libreplan_1.3.0.war
+RUN wget -q -O /usr/local/tomcat/webapps/libreplan.war http://downloads.sourceforge.net/project/libreplan/LibrePlan/libreplan_1.4.0.war
 ADD libreplan.xml /usr/local/tomcat/conf/Catalina/localhost/libreplan.xml
 
 # Patch policies

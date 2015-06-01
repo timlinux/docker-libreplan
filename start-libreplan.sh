@@ -20,7 +20,7 @@ if [[ ! `psql -lqt | grep '^ libreplan\b'` ]]; then
     CREATE USER libreplan WITH PASSWORD 'libreplan';\
     GRANT ALL PRIVILEGES ON DATABASE libreplan TO libreplan;" | psql;
 
-  wget -q -O install.sql http://downloads.sourceforge.net/project/libreplan/LibrePlan/install_1.3.0.sql
+  wget -q -O install.sql http://downloads.sourceforge.net/project/libreplan/LibrePlan/install_1.4.0.sql
   PGPASSWORD=libreplan psql -U libreplan -f install.sql;
 fi
 
