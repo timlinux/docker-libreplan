@@ -8,9 +8,12 @@ RUN apt-get -yq update && apt-get -yq install \
   libpg-java \
   xvfb
 
+# Remove default root app
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+
 # Install WAR and context
-RUN wget -q -O /usr/local/tomcat/webapps/libreplan.war http://downloads.sourceforge.net/project/libreplan/LibrePlan/libreplan_1.4.0.war
-ADD libreplan.xml /usr/local/tomcat/conf/Catalina/localhost/libreplan.xml
+RUN wget -q -O /usr/local/tomcat/webapps/ROOT.war http://downloads.sourceforge.net/project/libreplan/LibrePlan/libreplan_1.4.0.war
+ADD libreplan.xml /usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
 
 # Patch policies
 ADD catalina.policy.patch catalina.policy.patch
