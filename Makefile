@@ -87,7 +87,7 @@ shell:
 	@echo "------------------------------------------------------------------"
 	@echo "Shelling in in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run libreplan /bin/bash
+	@docker exec -t -i $(PROJECT_ID)_libreplan_1 psql -U docker -h localhost gis
 
 dbshell:
 	@echo
