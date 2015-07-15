@@ -1,10 +1,45 @@
-# Example docker-compose  configuration illustrating how to use this image
-
 libreplan:
   build: .
   links:
     db: db
   ports: ["8888:8080"]
 
+smtp:
+  image: catatnight/postfix
+  hostname: postfix
+  environment:
+    # You could change this to something more suitable
+    - maildomain=kartoza.com
+    - smtp_user=noreply:docker
+
 db:
-  image: postgres
+  image: kartoza/postgis
+  volumes:
+    - ./pg/postgres_data:/var/lib/postgresql
+  environment:
+    - USERNAME=docker
+    - PASS=docker
+  volumes:
+    - ./backups:/backups
+
+dbbackups:
+  image: kartoza/pg-backup
+  hostname: pg-backups
+  volumes:
+    - ./backups:/backups
+  links:
+    - db:db
+  environment:
+    # take care to let the project name below match that
+    # declared in the top of the makefile
+    - DUMPPREFIX=PG_libreplan
+    # These are all defaults anyway, but setting explicitly in
+    # case we ever want to ever use different credentials
+    - PGUSER=docker
+    - PGPASSWORD=docker
+    - PGPORT=5432
+    - PGHOST=db
+    - PGDATABASE=gis
+  volumes:
+    - ./backups:/backups
+
