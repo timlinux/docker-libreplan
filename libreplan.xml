@@ -4,7 +4,7 @@
     <Resource name="jdbc/libreplan-ds" auth="Container"
         type="javax.sql.DataSource"
         maxActive="100" maxIdle="30" maxWait="10000"
-        username="docker" password="docker"
+        username="libreplan" password="libreplan"
         driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://db/gis" />
+        url="jdbc:postgresql://db/libreplan" />
 </Context>

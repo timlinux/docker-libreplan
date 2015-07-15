@@ -33,13 +33,11 @@ dbbackups:
     # take care to let the project name below match that
     # declared in the top of the makefile
     - DUMPPREFIX=PG_libreplan
-    # These are all defaults anyway, but setting explicitly in
-    # case we ever want to ever use different credentials
-    - PGUSER=docker
-    - PGPASSWORD=docker
+    - PGUSER=libreplan
+    - PGPASSWORD=libreplan
     - PGPORT=5432
     - PGHOST=db
-    - PGDATABASE=gis
+    - PGDATABASE=libreplan
   volumes:
     - ./backups:/backups
 

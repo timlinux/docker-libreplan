@@ -2,8 +2,8 @@
 
 export PGHOST="$DB_PORT_5432_TCP_ADDR"
 export PGPORT="$DB_PORT_5432_TCP_PORT"
-export PGPASSWORD="$DB_ENV_POSTGRES_PASSWORD"
-export PGUSER=postgres
+export PGPASSWORD="docker"
+export PGUSER=docker
 
 polling_interval=3
 echo "wait for postgres to start first..."
