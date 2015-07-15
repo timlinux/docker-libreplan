@@ -18,7 +18,7 @@ done
 if [[ ! `psql -lqt | grep '^ libreplan\b'` ]]; then
   echo "CREATE DATABASE libreplan;\
     CREATE USER libreplan WITH PASSWORD 'libreplan';\
-    GRANT ALL PRIVILEGES ON DATABASE libreplan TO libreplan;" | psql;
+    GRANT ALL PRIVILEGES ON DATABASE libreplan TO libreplan;" | psql template1;
 
   wget -q -O install.sql http://downloads.sourceforge.net/project/libreplan/LibrePlan/install_1.4.0.sql
   PGPASSWORD=libreplan psql -U libreplan -f install.sql;
