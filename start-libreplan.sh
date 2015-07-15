@@ -2,8 +2,8 @@
 
 export PGHOST="$DB_PORT_5432_TCP_ADDR"
 export PGPORT="$DB_PORT_5432_TCP_PORT"
-export PGPASSWORD="$DB_ENV_POSTGRES_PASSWORD"
-export PGUSER=postgres
+export PGPASSWORD="docker"
+export PGUSER=docker
 
 polling_interval=3
 echo "wait for postgres to start first..."
@@ -16,12 +16,11 @@ do
 done
 
 if [[ ! `psql -lqt | grep '^ libreplan\b'` ]]; then
-  echo "CREATE DATABASE libreplan;\
-    CREATE USER libreplan WITH PASSWORD 'libreplan';\
-    GRANT ALL PRIVILEGES ON DATABASE libreplan TO libreplan;" | psql;
+  echo "CREATE DATABASE gis;\
+    GRANT ALL PRIVILEGES ON DATABASE docker TO docker;" | psql;
 
   wget -q -O install.sql http://downloads.sourceforge.net/project/libreplan/LibrePlan/install_1.4.0.sql
-  PGPASSWORD=libreplan psql -U libreplan -f install.sql;
+  PGPASSWORD=docker psql -U docker -f install.sql gis;
 fi
 
 catalina.sh run
